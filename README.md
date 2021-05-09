@@ -1,4 +1,4 @@
-<h1>###`Webook`</h1>
+<h1>###Webook</h1>
 
 <p> 
  communication in an organization will make better work performance, effective time management, can reduce cost and can save a lot of paperwork. communication in a task can have an impact on what will be executed in quality, quantity, and effectiveness.
@@ -6,10 +6,10 @@
 <p>
  Webook is web based system developed for orgnizatios inorder to improve their custom methode od communication
  </p>
- <h1>###`Avialiable scripts` </h1>
+ <h1>###Avialiable scripts</h1>
 
  ###`npm start`
 
  inorder to start this projectr just write nodemon.js on the terminal which staets the server on local host 7777
- ##Support this project 
- dagi.zaewdu,dz@gmail.com
+ ##Support this project you can contact 
+ dagi.zewdu.dz@gmail.com
