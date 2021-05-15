@@ -7,13 +7,15 @@
     "start":"nodemon index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "Dagic zewdu",
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "mongoose": "^5.12.7",
-    "nodemon": "^2.0.7",
     "socket.io": "^4.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
   }
 }
