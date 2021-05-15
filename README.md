@@ -10,6 +10,16 @@
 
  ###`npm start`
 
- inorder to start this projectr just write nodemon.js on the terminal which staets the server on local host 7777
+ inorder to start this projectr just write nodemon.js on the terminal which starts the server on local host 9090
  ##Support this project you can contact 
  dagi.zewdu.dz@gmail.com
+
+ <h1>change the directory to client (cd client)</h1>
+ ##`npm run start`
+ 
+ Inoder to start client side server on local 9000 
+ 
+ ##`npm run build`
+
+ The client js data for production mode
+
