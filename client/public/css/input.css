@@ -1,0 +1,22 @@
+.input-field.input-outlined > input {
+    border: 2px solid #eee;
+    padding: 12px 16px 14px;
+    width: calc(100% - 2.5rem);
+    float: none;
+    display: block;
+    border-radius: 4px;
+}
+.input-field.input-outlined > input:focus:not([readonly]) {
+    border-color: #26a69b;
+    box-shadow: 0 1px 0 0px #26a69b;
+}
+.input-field.input-outlined > label {
+    left: 27px;
+    display: inline-flex;
+    width: auto !important;
+}
+.input-field.input-outlined > label.active {
+    background: white;
+    border-left: 4px solid white;
+    border-right: 4px solid white;
+}

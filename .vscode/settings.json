@@ -1,3 +1,4 @@
 {
-    "editor.fontFamily": "Space mono"
+    "editor.fontFamily": "Space mono",
+    "editor.formatOnSave": true
 }

@@ -7,19 +7,27 @@
  Webook is web based system developed for orgnizatios inorder to improve their custom methode od communication
  </p>
  <h1>###Avialiable scripts</h1>
+### npm install
 
- ###`npm start`
+for installing npm all pasckages
 
- inorder to start this projectr just write nodemon.js on the terminal which starts the server on local host 9090
- ##Support this project you can contact 
- dagi.zewdu.dz@gmail.com
+ ### npm start 
 
+ inorder to start this project just write nodemon.js on the terminal which starts the server on local host 9090
+ 
  <h1>change the directory to client (cd client)</h1>
- ##`npm run start`
+
+### npm install
+
+for installing npm all pasckages
+
+ ### npm run start
  
  Inoder to start client side server on local 9000 
  
- ##`npm run build`
+ ### npm run build
 
  The client js data for production mode
 
+##Support this project you can contact 
+ dagi.zewdu.dz@gmail.com

@@ -1,0 +1,1 @@
+export const validateImage = (image: File) => image.type === 'image/jpeg' || image.type === 'image/png'
