@@ -4,7 +4,7 @@ const companySchema=require('../db/companySchema')
 /** for getting company data*/
 const getCompany = async (req,res)=>{
     try{
-     const get=await company.find({})
+     const get=await companySchema.find({})
      const Com= encryptObject(get.reverse())
     res.send(Com)
     }
@@ -21,7 +21,7 @@ const createCompany=async (req,res)=>{
     const company=new companySchema(data)
     const save=await company.save()
     const encrypt=encryptObject({created:true,error:false, //encrypting for response
-        message:'created successfully',data:Save})
+        message:'created successfully',data:save})
         res.send(encrypt)
   }
   catch(err){

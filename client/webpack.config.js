@@ -3,7 +3,8 @@ const path = require('path');
 module.exports = {
   entry: {
     index: ["./src/index.ts"],
-    registerCompany:["./src/registerCompany.ts"]
+    registerCompany:["./src/registerCompany.ts"],
+    addAdmin:["./src/addAdmin.ts"]
   },
   module: {
     rules: [
@@ -16,6 +17,7 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
+    fallback:{crypto:false}
   },
   mode:'development',
     devServer: {

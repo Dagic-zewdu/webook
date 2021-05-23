@@ -1,5 +1,4 @@
 export const render = (id: string, html: string) => {
-  console.log(id)
   const item = document.querySelector(id)!
   item.innerHTML = html
 }

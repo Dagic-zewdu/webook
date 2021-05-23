@@ -32,11 +32,11 @@ export interface companyDb {
      * @param renderDom string id to render
      */
 
-    saveCompany(arg: companyObject): Promise<createdRes> //save company data
+    saveCompany(arg: companyObject, id: string): Promise<void> //save company data
     /**
      * @param arg object of company to update 
      */
-    editComapny(arg: editableCompany): Promise<updatedRes> //edit compay data
+    editComapny(arg: editableCompany, id: string): Promise<void> //edit compay data
 }
 export interface company extends companyDb {
     name(): string

@@ -11,6 +11,6 @@ export const editData = async (data: {} | [], api: string) => {
         return res
     }
     catch (err) {
-        return { Update: {}, updated: false, error: true }
+        return { Update: {}, updated: false, error: false }
     }
 }

@@ -37,6 +37,12 @@
                         <label for="emp_length">Employee length</label>
                         <input id="emp_length" type="number" class="validate" required="true">
                     </div>
+                    <!--Department length-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">dashboard </i>
+                        <label for="dept_length">Department length</label>
+                        <input id="dept_length" type="number" class="validate" required="true">
+                    </div>
                     <!--city-->
                     <div class="input-field input-outlined s6">
                         <i class="material-icons prefix">apartment </i>
@@ -49,16 +55,15 @@
                         <label for="subcity">subcity</label>
                         <input id="subcity" type="text" class="validate" required="true">
                     </div>
+
+                </div>
+                <div class="col s12 m6 l4" style="margin-left: 30px;">
                     <!--woreda-->
                     <div class="input-field input-outlined s6">
                         <i class="material-icons prefix">location_city</i>
                         <label for="woreda">woreda</label>
                         <input id="woreda" type="text" class="validate" required="true">
                     </div>
-
-
-                </div>
-                <div class="col s12 m6 l4" style="margin-left: 30px;">
                     <!--house number-->
                     <div class="input-field input-outlined s6">
                         <i class="material-icons prefix">home </i>
@@ -77,6 +82,10 @@
                         <label for="phone_2">phone number two </label>
                         <input id="phone_2" type="number" class="validate">
                     </div>
+
+                </div>
+                <div class="col s12 m6 l3" style="margin-left: 30px;">
+                    <img src="" alt="" width="300px" class="materialboxed" id="logoImage">
                     <!--logo-->
                     <div class="input-field input-outlined s6">
                         <p class="">upload logo</p>
@@ -84,7 +93,7 @@
                     </div>
                     <!--progress-->
                     <progress id="fileUpload" value="0" max="100"> </progress>
-                    <p id="progrress">0%</p>
+                    <p id="progress">0%</p>
                     <!--register message-->
                     <div id="message" style="margin-top: 20px;">
 
@@ -92,9 +101,6 @@
                     <!--submit-->
                     <button type="submit" class="btn indigo" id="submit">save</button>
                     <button type="reset" class="btn red darken-4">Reset</button>
-                </div>
-                <div class="col s12 m6 l3" style="margin-left: 30px;">
-                    <img src="" alt="" width="300px" class="materialboxed" id="logoImage">
                 </div>
 
             </div>
