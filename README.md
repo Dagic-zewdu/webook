@@ -1,4 +1,4 @@
-<h1>###Webook</h1>
+<h1>Webook</h1>
 
 <p> 
  communication in an organization will make better work performance, effective time management, can reduce cost and can save a lot of paperwork. communication in a task can have an impact on what will be executed in quality, quantity, and effectiveness.
@@ -6,7 +6,7 @@
 <p>
  Webook is web based system developed for orgnizatios inorder to improve their custom methode od communication
  </p>
- <h1>###Avialiable scripts</h1>
+ <h1>Avialiable scripts</h1>
  
  ### npm install
 
