@@ -31,7 +31,7 @@ export interface companyDb {
      * @param arg company object
      * @param renderDom string id to render
      */
-
+    isCompanyset(): Promise<Boolean>
     saveCompany(arg: companyObject, id: string): Promise<void> //save company data
     /**
      * @param arg object of company to update 

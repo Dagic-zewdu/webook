@@ -14,13 +14,11 @@ const form = document.querySelector("#register")! as HTMLFormElement
 const upload = document.querySelector('#fileUpload')! as HTMLProgressElement
 const company = new CompanyDb()
 
-window.addEventListener('load', e => {
-    const check = async () => {
-        const Company = await company.getCompany()
-        if (Company !== undefined)
-            window.location.pathname = '/addAdmin.html'
+window.addEventListener('load', async e => {
+    let com = await company.isCompanyset()
+    if (com) {
+        window.location.pathname = '/addAdmin.html'
     }
-    check()
 })
 
 Logo.addEventListener('change', e => {
@@ -38,21 +36,19 @@ Logo.addEventListener('change', e => {
 })
 
 
-form.addEventListener('submit', e => {
+form.addEventListener('submit', async e => {
     e.preventDefault()
     if (logoName !== null) {
-        const uploader = async () => {
-            const Up = await uploadFile(File, upload, '#progress')
-            if (Up.id !== '') {
-                const logo = Up.id + logoName
-                const companyData = { ...formObject(form), logo } as companyObject
-                //saving
-                renderLoading('#message')
+        const Up = await uploadFile(File, upload, '#progress')
+        if (Up.id !== '') {
+            const logo = Up.id + logoName
+            const companyData = { ...formObject(form), logo } as companyObject
+            //saving
+            renderLoading('#message')
 
-                company.saveCompany(companyData, '#message')
-            }
-
+            company.saveCompany(companyData, '#message')
         }
-        uploader()
+
+
     }
 })

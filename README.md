@@ -24,7 +24,7 @@ for installing npm all client side packages
 
 ### npm run start
 
-Inoder to start client side server on local 9000
+Inoder to start devlopment server on localhost:9000
 
 ### npm run build
 

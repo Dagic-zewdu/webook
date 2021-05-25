@@ -11,3 +11,9 @@ export const decrptObject = (object: string) => {
     var decryptedData = JSON.parse(bytes.toString(CryptoJS.enc.Utf8));
     return decryptedData
 }
+export const encryptToken = (arg: string) => CryptoJS.AES.encrypt(arg, password).toString();
+export const decryptToken = (arg: string) => {
+    var bytes = CryptoJS.AES.decrypt(arg, password);
+    var decryptedData = bytes.toString(CryptoJS.enc.Utf8);
+    return decryptedData
+}

@@ -1,0 +1,77 @@
+import axios from "axios";
+import { config } from "../config/config";
+import { fetchData } from "../connection/fetchData";
+import { renderLoading, renderOutput } from "../Dom/render";
+import { loginData, signupData, userDB, userData } from "../Interfaces/users";
+import { decrptObject, encryptObject, encryptToken } from "../security/encrypt";
+
+export class usersDb implements userDB {
+    /**get users from the server
+     * @returns object array of users
+     */
+    getUsers = async () => (await fetchData('users')).data as [userData]
+    /** check the users are loaded from the server
+     * @returns true if the users are loaded false if they are not
+     */
+    usersLoaded = async () => !(await fetchData('users')).loading
+    /** checks if error happend when users are loade
+    * @returns boolean 
+     */
+    usersError = async () => (await fetchData('users')).error
+    /**create an account for the user
+     * @param DATA- company object 
+     * @param id-render dom id 
+     */
+    signUp = async (DATA: signupData, id: string) => {
+        try {
+            renderLoading(id)
+            let data = encryptObject(DATA)
+            let req = await axios.post(config.host + 'signUp', { data })
+            let res = decrptObject(req.data)
+            console.log(res)
+            if (res.error) {
+                renderOutput("error", res.message, id)
+            }
+            else if (res.signed) {
+                renderOutput("success", "Welcome", id)
+                const Token = encryptToken(res.token)
+                localStorage.removeItem('id')
+                localStorage.removeItem('token')
+                localStorage.removeItem('auth')
+                localStorage.removeItem('user_type')
+                localStorage.setItem('id', res.id)
+                localStorage.setItem('token', Token)
+                localStorage.setItem('auth', true + '')
+                localStorage.setItem('user_type', DATA.user_type)
+                setTimeout(() => {
+                    if (DATA.user_type === 'admin') {
+                        window.location.pathname = '/admin.html'
+                    }
+                    else if (DATA.user_type === 'employee' || DATA.user_type === 'manager') {
+                        window.location.pathname = '/'
+                    }
+                }, 1000)
+            }
+            else {
+                renderOutput("error", res.message, id)
+            }
+        }
+        catch (err) {
+            console.log(err)
+            renderOutput("error", 'unable to sign up server is not active', id)
+        }
+    }
+    /**
+     * 
+     * @param data 
+     * @param id 
+     */
+    logIn = async (data: loginData, id: string) => {
+
+    }
+    /**check if an admin is refistered before
+     * @returns boolean
+     */
+    isAdminset = async () => (await this.usersLoaded()) ?
+        (await this.getUsers())[0] ? true : false : false
+}

@@ -10,11 +10,12 @@ export class CompanyDb implements companyDb {
      */
     getCompany = async () => {
         let data = await fetchData('company')
-        let com = data[0] as companyObject
+        let com = data.data[0] as companyObject
         return com
     }
     /**Send data to the sever based on object or array provided
      * @param arg -company object to save
+     * @param id- uniquely to select an element
      * @returns createdRes
      */
     saveCompany = async (arg: companyObject, id: string) => {
@@ -35,6 +36,7 @@ export class CompanyDb implements companyDb {
     }
     /**
      * @param arg- company object to edit
+     * @param id- company id
      * @returns updated object response
      */
     editComapny = async (arg: editableCompany, id: string) => {
@@ -51,5 +53,5 @@ export class CompanyDb implements companyDb {
             renderOutput("error", "unable to edit please try again letter", id)
         }
     }
-
+    isCompanyset = async () => (await this.getCompany()) ? true : false
 }
