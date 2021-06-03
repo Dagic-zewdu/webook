@@ -28,13 +28,12 @@ export class usersDb implements userDB {
             let data = encryptObject(DATA)
             let req = await axios.post(config.host + 'signUp', { data })
             let res = decrptObject(req.data)
-            console.log(res)
             if (res.error) {
                 renderOutput("error", res.message, id)
             }
             else if (res.signed) {
                 renderOutput("success", "Welcome", id)
-                const Token = encryptToken(res.token)
+                const Token = encryptToken(res.Token)
                 localStorage.removeItem('id')
                 localStorage.removeItem('token')
                 localStorage.removeItem('auth')
@@ -67,7 +66,41 @@ export class usersDb implements userDB {
      * @param id 
      */
     logIn = async (data: loginData, id: string) => {
-
+        try {
+            renderLoading(id)
+            const req = await axios.post(config.host + 'login', { data: encryptObject(data) })
+            const res = decrptObject(req.data)
+            if (res.error) {
+                renderOutput("error", res.message, id)
+            }
+            else if (res.login) {
+                renderOutput("success", "Welcome", id)
+                const Token = encryptToken(res.Token)
+                localStorage.removeItem('id')
+                localStorage.removeItem('token')
+                localStorage.removeItem('auth')
+                localStorage.removeItem('user_type')
+                localStorage.setItem('id', res.id)
+                localStorage.setItem('token', Token)
+                localStorage.setItem('auth', true + '')
+                localStorage.setItem('user_type', res.user_type)
+                setTimeout(() => {
+                    if (res.user_type === 'admin') {
+                        window.location.pathname = '/admin.html'
+                    }
+                    else if (res.user_type === 'employee' || res.user_type === 'manager') {
+                        window.location.pathname = '/'
+                    }
+                }, 1000)
+            }
+            else {
+                renderOutput("error", res.message, id)
+            }
+        }
+        catch (err) {
+            console.log(err)
+            renderOutput("error", 'unable to sign up server is not active', id)
+        }
     }
     /**check if an admin is refistered before
      * @returns boolean

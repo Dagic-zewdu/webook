@@ -23,8 +23,8 @@ const Users=mongoose.Schema({
      created_date:{
       type:Date,
       default: Date.now
-   }
-
+   },
+    photo:String
 })
 
 /** */

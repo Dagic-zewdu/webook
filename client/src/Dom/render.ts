@@ -1,7 +1,12 @@
+const body = document.querySelector('body')!
 export const render = (id: string, html: string) => {
-  const item = document.querySelector(id)!
+  const item = body.querySelector(id)!
   item.innerHTML = html
 }
+export const replaceAll = (word: string, search: string, replace: string) => word.split(search).join(replace);
+
+export const lister = (element: string[]) => replaceAll(element.join(), ',', '')
+
 /**
  * @param error-message to display
  * @param id-html selector element
@@ -20,3 +25,4 @@ export const renderLoading = (id: string) => render(id,
     <div class="dot-collision"></div>
   </div>
 </div>`)
+export const renderContentLoading = (id: string) => render(id, '<div class="loader-wrapper"><div class="loader">Loading...</div></div>')

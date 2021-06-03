@@ -6,7 +6,6 @@ const token = (type, id) => {
         Token = jwt.sign({id}, manager)
     }
     else if (type == 'admin') {
-        console.log(type,id)
     Token = jwt.sign({id}, admin)
     }
     else if (type == 'employee') {

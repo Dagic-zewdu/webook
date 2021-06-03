@@ -39,5 +39,8 @@ export interface companyDb {
     editComapny(arg: editableCompany, id: string): Promise<void> //edit compay data
 }
 export interface company extends companyDb {
+    companY: companyObject
+
     name(): string
+    logo(): string
 }

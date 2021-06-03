@@ -21790,78 +21790,7 @@ address p {
   background-color: #e9e9e9;
 }
 
-.table {
-  width: 100%;
-  max-width: 100%;
-  border-collapse: collapse;
-}
 
-.table thead tr th {
-  padding: 14px 10px;
-  color: #757575;
-  font-size: 14px;
-  text-align: right;
-  border-bottom: 1px solid #e9eaef;
-  font-weight: 500;
-}
-
-.table thead tr th:first-child {
-  padding-left: 30px;
-}
-
-.table thead tr th:last-child {
-  padding-right: 30px;
-}
-
-.table tbody tr {
-  -webkit-transition-duration: 0.3s;
-  -moz-transition-duration: 0.3s;
-  -o-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-}
-
-.table tbody tr td {
-  padding: 14px 10px;
-  font-size: 14px;
-  color: #212121;
-  text-align: right;
-  border-bottom: 1px solid #e9eaef;
-  font-weight: 400;
-  white-space: nowrap;
-}
-
-.table tbody tr td:first-child {
-  padding-left: 30px;
-}
-
-.table tbody tr td:last-child {
-  padding-right: 30px;
-}
-
-.table tbody tr td .mdc-button {
-  min-width: 0;
-  height: 24px;
-  line-height: 24px;
-}
-
-.table tbody tr:last-child td {
-  border-bottom: none;
-}
-
-.table.table-hoverable tr:hover {
-  background: #EEEEEE;
-}
-
-.table.table-striped tbody tr:nth-child(odd) {
-  background: #EEEEEE;
-}
-
-.table-responsive {
-  display: block;
-  width: 100%;
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
-}
 
 .mdc-tab-wrapper .mdc-tab-bar .mdc-tab {
   font-size: 0.75rem;

@@ -6,7 +6,7 @@ const { host } = config
 export const editData = async (data: {} | [], api: string) => {
     try {
         let encrypt = encryptObject(data)
-        let req = await axios.put(host + api, { data: encryptObject })
+        let req = await axios.put(host + api, { data: encrypt })
         let res = decrptObject(req.data) as updatedRes
         return res
     }

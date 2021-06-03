@@ -4,7 +4,12 @@ module.exports = {
   entry: {
     index: ["./src/index.ts"],
     registerCompany:["./src/registerCompany.ts"],
-    addAdmin:["./src/addAdmin.ts"]
+    addAdmin:["./src/addAdmin.ts"],
+    login:["./src/login.ts"],
+    admin:['./src/admin/admin.ts'],
+    employees:['./src/admin/employees.ts'],
+    department:['./src/admin/department.ts'],
+    createDepartment:['./src/admin/createDepartent.ts']
   },
   module: {
     rules: [

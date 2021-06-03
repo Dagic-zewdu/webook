@@ -1,5 +1,5 @@
 import { fetchData } from "../connection/fetchData";
-import { companyDb, companyObject, editableCompany } from "../Interfaces/company";
+import { companyDb, companyObject, editableCompany, company } from "../Interfaces/company";
 import { saveData } from "../connection/saveData";
 import { editData } from "../connection/editData";
 import { render, renderLoading, renderOutput } from "../Dom/render";
@@ -54,4 +54,22 @@ export class CompanyDb implements companyDb {
         }
     }
     isCompanyset = async () => (await this.getCompany()) ? true : false
+}
+
+let com = { name: '', logo: '', dept_length: 0, emp_length: 0, city: '', subcity: '', woreda: '', house: '', phone_1: '', phone_2: '' }
+export class Company extends CompanyDb implements company {
+    public companY: companyObject
+    constructor() {
+        super()
+        this.companY = com
+    }
+    initialize = async () => {
+        this.companY = await this.getCompany()
+    }
+    name = () => this.companY.name
+
+
+
+    logo = () => this.companY.logo
+
 }
