@@ -23,11 +23,12 @@ const createDepartment = async (req, res) => {
     if (checkDepartment.length > 0) {
       //if department found send this departmnet exist
       let response = encryptObject({
-created: false, error: false,message: 'You have registered department with the same name before'
+        created: false, error: false, message: 'You have registered department with the same name before'
       })
       res.send(response)
     }
     else {
+
       const saveDepartment = new department(decrypt)
       const save = await saveDepartment.save()
       const response = encryptObject({ save, created: true, error: false, message: 'created successfully' })

@@ -9,20 +9,22 @@ export class DepartmentDb implements departmentDb {
     getDepartment = async () => (await fetchData('department')).data as [departmentData]
     departmentLoaded = async () => !(await fetchData('department')).loading
     departmentError = async () => (await fetchData('department')).error
-    saveDepartment = async (dep: saveDepartment, id: string) => {
+    saveDepartment = async (dep: saveDepartment, id?: string) => {
         renderLoading(id)
-        const save = await saveData(dep, 'company')
+        const save = await saveData(dep, 'department')
         if (!save.error) {
             if (save.created) {
                 renderOutput("success", "department save successfully", id)
             }
             else if (!save.created) {
-                renderOutput("error", "unable to save internal server error", id)
+
+                renderOutput("error", "unable to save " + save.message, id)
             }
         }
         else {
-            renderOutput("error", "unable to save please try again letter", id)
+            renderOutput("error", "unable to save please try again letter" + save.message._message, id)
         }
+
     }
     editDepartment = async (dep: editDepartment, id: string) => {
         const save = await editData(dep, 'department')

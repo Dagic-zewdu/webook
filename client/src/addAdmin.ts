@@ -25,7 +25,7 @@ form.addEventListener('submit', async e => {
     e.preventDefault()
     const users = formObject(form)
     let { password, cpassword } = users
-    let compare = password.localeCompare(cpassword)
+    let compare = password.toString().localeCompare(cpassword.toString())
     let data = { ...users, user_type: 'admin' } as signupData
     if (compare === 0) {
         userDb.signUp(data, '#message')

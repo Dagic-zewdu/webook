@@ -12,6 +12,6 @@ export const saveData = async (arg: {} | [], api: string) => {
     }
     catch (err) {
         console.log(err)
-        return { created: false, error: false, message: '', data: {} }
+        return { created: false, error: false, message: Object, data: {} }
     }
 }

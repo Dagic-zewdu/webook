@@ -1,19 +1,23 @@
-const mongoose= require('mongoose')
-const {Schema}=mongoose
+const mongoose = require('mongoose')
+const { Schema } = mongoose
 /**creating users(emplooyee) */
-const Department=mongoose.Schema({
-  name:{
-      type:String,
-      required:true
-  },
-  phone:String,
-  office_number:String,
-   created_date:{
-      type:Date,
+const Department = mongoose.Schema({
+   name: {
+      type: String,
+      required: true
+   },
+   emp_length: {
+      type: Number,
+      required: true
+   },
+   phone: String,
+   office_number: String,
+   created_date: {
+      type: Date,
       default: Date.now
    }
 })
 
 /** */
-const department=new mongoose.model('department',Department)
- module.exports=department
+const department = new mongoose.model('department', Department)
+module.exports = department

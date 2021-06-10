@@ -1,7 +1,7 @@
 import { CompanyDb } from "../classes/company";
 import { config } from "../config/config";
 import { js, style } from "../Dom/addStyle";
-import { sideNav } from "../inject/sideNav";
+import { sideNav } from "../layout/sideNav";
 import { checkAdmin } from "../security/auth";
 const company = new CompanyDb()
 /**

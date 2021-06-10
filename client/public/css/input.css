@@ -556,7 +556,7 @@ textarea.materialize-textarea + label:after,
   transition: 0.3s background-color;
 }
 .input-field.input-outlined > input {
-  border: 2px solid rgb(155, 155, 252);
+  border: 2px solid rgb(174, 160, 255);
   padding: 12px 16px 14px;
   width: calc(90% - 2.5rem);
   float: none;
@@ -573,7 +573,8 @@ textarea.materialize-textarea + label:after,
   width: auto !important;
 }
 .input-field.input-outlined > label.active {
-  background: white;
-  border-left: 4px solid white;
-  border-right: 4px solid white;
+  background: rgb(238, 238, 241);
+  color: rgb(0, 0, 0);
+  border-left: none;
+  border-right: none;
 }

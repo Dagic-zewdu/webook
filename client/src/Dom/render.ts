@@ -11,15 +11,15 @@ export const lister = (element: string[]) => replaceAll(element.join(), ',', '')
  * @param error-message to display
  * @param id-html selector element
  */
-export const renderOutput = (type: 'success' | 'error', message: string, id: string) => type === 'error' ?
-  render(id, `<p class='text-danger'>${message} </p`) :
-  type === `success` ? render(id, `<p class='text-success'>${message} </p`) :
-    render(id, `<p></p>`)
+export const renderOutput = (type: 'success' | 'error', message: string, id?: string) => type === 'error' ?
+  render(id ? id : '#message', `<p class='text-danger'>${message} </p`) :
+  type === `success` ? render(id ? id : '#message', `<p class='text-success'>${message} </p`) :
+    render(id ? id : '#message', `<p></p>`)
 
 /**
  * @param id-html selector element
  */
-export const renderLoading = (id: string) => render(id,
+export const renderLoading = (id?: string) => render(id ? id : '#message',
   `<div class="snippet" data-title=".dot-collision">
   <div class="stage">
     <div class="dot-collision"></div>
