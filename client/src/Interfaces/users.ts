@@ -17,13 +17,11 @@ export type userData = {
     created_date: Date
 }
 export interface userDB {
-    /*** check if the users are loaded*/
-    usersLoaded(): Promise<boolean>
     /**return's user if an error is happened when the users data are loaded */
     usersError(): Promise<boolean>
     /**
      */
-    getUsers(): Promise<[userData]>
+    getUsers(): Promise<userData[]>
     /** create an account for the user
      * @param data-object that contains sign up information
      * @param id -dom id to render

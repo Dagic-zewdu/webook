@@ -25,4 +25,16 @@ export const renderLoading = (id?: string) => render(id ? id : '#message',
     <div class="dot-collision"></div>
   </div>
 </div>`)
-export const renderContentLoading = (id: string) => render(id, '<div class="loader-wrapper"><div class="loader">Loading...</div></div>')
+export const renderContentLoading = (id: string) => render(id, `<h1 class='center row'>
+<div class="col mr-auto center mt60 ml100">Loading</div>
+<div class="col snippet center mt80" data-title=".dot-collision">
+  <div class="stage center">
+  <div class="dot-collision center"></div>
+  </div>
+</div>
+</h1>`)
+export const renderLoadingError = (id: string, message?: string) => render(id, `<h1 class ='text-danger'>
+<i class='material-icons'>cancel</i>
+${message ? message :
+    'Loading data fialed please try again by refreshing the page'}
+</h1>`)

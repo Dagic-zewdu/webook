@@ -3,13 +3,14 @@ const path = require('path');
 module.exports = {
   entry: {
     index: ["./src/index.ts"],
-    registerCompany:["./src/registerCompany.ts"],
-    addAdmin:["./src/addAdmin.ts"],
-    login:["./src/login.ts"],
-    admin:['./src/admin/admin.ts'],
-    employees:['./src/admin/employees.ts'],
-    department:['./src/admin/department.ts'],
-    createDepartment:['./src/admin/createDepartent.ts']
+    registerCompany: ["./src/registerCompany.ts"],
+    addAdmin: ["./src/addAdmin.ts"],
+    login: ["./src/login.ts"],
+    admin: ['./src/admin/admin.ts'],
+    employees: ['./src/admin/employees.ts'],
+    department: ['./src/admin/department.ts'],
+    createDepartment: ['./src/admin/createDepartent.ts'],
+    editDepartment: ['./src/admin/editDepartment.ts']
   },
   module: {
     rules: [
@@ -22,18 +23,18 @@ module.exports = {
   },
   resolve: {
     extensions: ['.ts', '.js'],
-    fallback:{crypto:false}
+    fallback: { crypto: false }
   },
-  mode:'development',
-    devServer: {
-        contentBase: path.resolve(__dirname, 'public'),
-        publicPath:'/assets/',     
-        port: 9000,
-        open:true,
-        liveReload: true,
-        watchContentBase: true,
-      },
-   
+  mode: 'development',
+  devServer: {
+    contentBase: path.resolve(__dirname, 'public'),
+    publicPath: '/assets/',
+    port: 9000,
+    open: true,
+    liveReload: true,
+    watchContentBase: true,
+  },
+
   devtool: 'eval-source-map',
   output: {
     filename: '[name].bundle.js',

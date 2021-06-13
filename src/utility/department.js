@@ -68,6 +68,7 @@ const editDepartment = async (req, res) => {
 }
 const deleteDepartment = async (req, res) => {
   try {
+
     const decrpt = decrptObject(req.body.data)
     let { _id } = decrpt
     if (_id === undefined)

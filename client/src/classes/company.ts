@@ -2,7 +2,7 @@ import { fetchData } from "../connection/fetchData";
 import { companyDb, companyObject, editableCompany, company } from "../Interfaces/company";
 import { saveData } from "../connection/saveData";
 import { editData } from "../connection/editData";
-import { render, renderLoading, renderOutput } from "../Dom/render";
+import { renderLoading, renderOutput } from "../Dom/render";
 export class CompanyDb implements companyDb {
 
     /**get company data
@@ -10,7 +10,18 @@ export class CompanyDb implements companyDb {
      */
     getCompany = async () => {
         let data = await fetchData('company')
-        let com = data.data[0] as companyObject
+        let com = data.data ? data.data[0] as companyObject : {
+            name: '',
+            logo: '',
+            dept_length: 0,
+            emp_length: 0,
+            city: '',
+            subcity: '',
+            woreda: '',
+            house: '',
+            phone_1: '',
+            phone_2: '',
+        } as companyObject
         return com
     }
     /**Send data to the sever based on object or array provided

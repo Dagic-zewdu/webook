@@ -6,9 +6,8 @@ import { renderLoading, renderOutput } from "../Dom/render";
 import { delDepartment, departmentData, departmentDb, editDepartment, saveDepartment } from "../Interfaces/department";
 
 export class DepartmentDb implements departmentDb {
-    getDepartment = async () => (await fetchData('department')).data as [departmentData]
-    departmentLoaded = async () => !(await fetchData('department')).loading
-    departmentError = async () => (await fetchData('department')).error
+    getDepartment = async () => (await fetchData('department')).data as departmentData[]
+    departmentError = async (): Promise<boolean> => (await fetchData('department')).error
     saveDepartment = async (dep: saveDepartment, id?: string) => {
         renderLoading(id)
         const save = await saveData(dep, 'department')
@@ -26,7 +25,7 @@ export class DepartmentDb implements departmentDb {
         }
 
     }
-    editDepartment = async (dep: editDepartment, id: string) => {
+    editDepartment = async (dep: editDepartment, id?: string) => {
         const save = await editData(dep, 'department')
         if (!save.error) {
             if (save.updated) {
@@ -40,13 +39,14 @@ export class DepartmentDb implements departmentDb {
             renderOutput("error", "unable to edit please try again letter", id)
         }
     }
-    delDepartment = async (dep: delDepartment, id: string) => {
-        const save = await delData(dep, 'department')
-        if (!save.error) {
-            if (save.deleted) {
+    delDepartment = async (dep: delDepartment, id?: string) => {
+        renderLoading('#delMessage')
+        const del = await delData(dep, 'department')
+        if (!del.error) {
+            if (del.deleted) {
                 renderOutput("success", "department deleted successfully", id)
             }
-            else if (!save.deleted) {
+            else if (!del.deleted) {
                 renderOutput("error", "internal server error", id)
             }
         }

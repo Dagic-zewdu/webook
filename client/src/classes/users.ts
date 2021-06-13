@@ -9,11 +9,7 @@ export class usersDb implements userDB {
     /**get users from the server
      * @returns object array of users
      */
-    getUsers = async () => (await fetchData('users')).data as [userData]
-    /** check the users are loaded from the server
-     * @returns true if the users are loaded false if they are not
-     */
-    usersLoaded = async () => !(await fetchData('users')).loading
+    getUsers = async () => (await fetchData('users')).data as userData[]
     /** checks if error happend when users are loade
     * @returns boolean 
      */
@@ -105,6 +101,5 @@ export class usersDb implements userDB {
     /**check if an admin is refistered before
      * @returns boolean
      */
-    isAdminset = async () => (await this.usersLoaded()) ?
-        (await this.getUsers())[0] ? true : false : false
+    isAdminset = async () => (await this.getUsers())[0] ? true : false
 }
