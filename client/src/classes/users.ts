@@ -101,5 +101,5 @@ export class usersDb implements userDB {
     /**check if an admin is refistered before
      * @returns boolean
      */
-    isAdminset = async () => (await this.getUsers())[0] ? true : false
+    isAdminset = async () => (await this.getUsers()).length ? true : false
 }

@@ -7,12 +7,13 @@ const company = new CompanyDb()
 /**
  * 
  * @param page page title to show
- * @param search true-to avoid search input false-to include the default search input 
+ * @param search true-to avoid search input false-to include the default search input
+ * @param icon icon to set for the page 
  */
-export const allAdmin = async (page: string, search?: boolean) => {
+export const setAdmin = async (page: string, search?: boolean, icon?: string) => {
     const append = document.querySelector('#append')!
     const body = document.querySelector('body')!
-    body.innerHTML = sideNav(page, search)
+    body.innerHTML = sideNav(page, search, icon)
     const main = body.querySelector('#main')!
     const logo = body.querySelector('#compLogo')! as HTMLImageElement
     main.append(append)

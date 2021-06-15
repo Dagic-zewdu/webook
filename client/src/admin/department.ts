@@ -3,9 +3,9 @@ import { render, renderContentLoading, renderLoading, renderLoadingError } from 
 import { optionButton, renderTable, thead } from "../Dom/renderTable";
 import { departmentData } from "../Interfaces/department";
 import { setModal } from "../layout/Modal";
-import { allAdmin } from "./main";
+import { setAdmin } from "./main";
 //admin set 
-allAdmin('Department')
+setAdmin('Department')
 //data
 let dep = new DepartmentDb()
 let Dep: Department //department class
@@ -86,6 +86,7 @@ delConfirm.addEventListener('click', () => delDepartment())
 //Delete department from
 const delDepartment = () => {
     dep.delDepartment({ _id: d_id }, '#delMessage')
+    setData()
 }
 //search data input add event listener
 Search.addEventListener('keyup', e => {

@@ -1,3 +1,3 @@
-import { allAdmin } from "./main";
+import { setAdmin } from "./main";
 
-allAdmin('Employees')
+setAdmin('Employees', false, 'people')
