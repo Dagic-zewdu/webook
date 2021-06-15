@@ -3,7 +3,9 @@ import { editData } from "../connection/editData";
 import { fetchData } from "../connection/fetchData";
 import { saveData } from "../connection/saveData";
 import { renderLoading, renderOutput } from "../Dom/render";
-import { delDepartment, departmentData, departmentDb, editDepartment, saveDepartment } from "../Interfaces/department";
+import { delDepartment, department, departmentData, departmentDb, editDepartment, saveDepartment } from "../Interfaces/department";
+import { removeDuplicates } from "../Utility/array";
+import { matchString } from "../Utility/search";
 
 export class DepartmentDb implements departmentDb {
     getDepartment = async () => (await fetchData('department')).data as departmentData[]
@@ -54,4 +56,19 @@ export class DepartmentDb implements departmentDb {
             renderOutput("error", "unable to edit please try again letter", id)
         }
     }
+}
+
+export class Department implements department {
+    public Departments: departmentData[]
+    constructor(deparments: departmentData[]) {
+        this.Departments = deparments
+    }
+    searchDepartment = (index: string | number) => {
+        const name = this.Departments.filter(d => matchString(index, d.name))
+        const office_number = this.Departments.filter(d => matchString(index, d.office_number))
+        const phone = this.Departments.filter(d => matchString(index, d.phone))
+        return removeDuplicates([...name, ...office_number, ...phone], '_id') as departmentData[]
+    }
+    getDepartment = (id: string | number) => this.Departments.find(d => d._id === id)!
+    name = (id: string | number) => this.getDepartment(id) ? this.getDepartment(id).name : ''
 }

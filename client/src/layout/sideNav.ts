@@ -3,7 +3,8 @@
  * @param search => to avoid search input
  * @returns side nav html string
  */
-export const sideNav = (page: string, search?: boolean) => `<div class="body-wrapper">
+export const sideNav = (page: string, search?: boolean, icon?: string) =>
+    `<div class="body-wrapper">
 <!-- partial:partials/_sidebar.html -->
 <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
 
@@ -73,7 +74,7 @@ export const sideNav = (page: string, search?: boolean) => `<div class="body-wra
                 <button
                     class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button sidebar-toggler">menu</button>
                 <span class="mdc-top-app-bar__title">
-                    <i class="material-icons">track_changes</i>
+                    <i class="material-icons">${icon}</i>
                     ${page}
                 </span>
                 ${!search ?

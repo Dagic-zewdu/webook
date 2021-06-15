@@ -3,7 +3,7 @@ export type departmentData = {
     name: string,
     phone: string,
     emp_length: number,
-    office_number: string,
+    office_number: number,
     created_date: Date | null
 }
 export type saveDepartment = {
@@ -26,4 +26,10 @@ export interface departmentDb {
     saveDepartment(dep: saveDepartment, id: string): Promise<void>
     editDepartment(dep: editDepartment, id: string): Promise<void>
     delDepartment(dep: delDepartment, id: string): Promise<void>
+}
+export interface department {
+    Departments: departmentData[]
+    searchDepartment(index: string | number): departmentData[]
+    getDepartment(id: string | number): departmentData
+    name(id: string | number): string
 }

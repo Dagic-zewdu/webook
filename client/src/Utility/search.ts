@@ -1,18 +1,18 @@
-export const matchString = (Index: string, Text: string) => {
-   let ind = Index.toLowerCase()
-   if (Text.toLowerCase().match(ind)) {
+export const matchString = (Index: string | number, Text: string | number) => {
+   let ind = Index.toString().toLowerCase()
+   if (Text.toString().toLowerCase().match(ind)) {
       return true
    }
    else {
       //text
-      let text = Text.trim().toLowerCase().split('') //splited text ['a','b','e','b','e']
-      let textFirst = Text.toLowerCase().slice(0, 1)
-      let textSecond = Text.toLowerCase().slice(0, 2)
+      let text = Text.toString().trim().toLowerCase().split('') //splited text ['a','b','e','b','e']
+      let textFirst = Text.toString().toLowerCase().slice(0, 1)
+      let textSecond = Text.toString().toLowerCase().slice(0, 2)
       let textSecFirst = textSecond.slice(1, 2)
       //index
-      let index = Index.trim().toLowerCase().split('')
-      let indexFirst = Index.toLowerCase().slice(0, 1)
-      let indexSecond = Index.toLowerCase().slice(0, 2)
+      let index = Index.toString().trim().toLowerCase().split('')
+      let indexFirst = Index.toString().toLowerCase().slice(0, 1)
+      let indexSecond = Index.toString().toLowerCase().slice(0, 2)
       //length
       let textLength = text.length
       let indexLength = index.length

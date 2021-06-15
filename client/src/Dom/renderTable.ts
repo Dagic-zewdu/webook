@@ -1,7 +1,7 @@
 import { arrayObject } from "../Interfaces/general"
 import { lister, render } from "./render"
 export type sample = { _id: string | number, [props: string]: any }
-export type optionButton = { name: string, color: string, icon?: string }
+export type optionButton = { name: string, color?: string, icon?: string }
 export type thead = { name: string, icon?: string }
 
 export const Headers = (headers: thead[]) => `<tr>` + lister(headers.map(h => `<th>
@@ -19,7 +19,8 @@ export const Body = (data: sample[], options: optionButton[]) => {
                 td += `<td>` + d[i] + `</td>`
         }
         let opt = `<td>` + lister(options.map(o =>
-            `<button class="button button-${o.color} mr20 ml20 mb20" id="${d._id}"  name="${o.name}">
+            `<button class="button button-${o.color ? o.color : 'info'} 
+            mr20 ml20 mb20" id="${d._id}"  name="${o.name}">
             <i class="material-icons ml5">${o.icon} </i>
         ${o.name}
         </button>`)) + `</td>`
