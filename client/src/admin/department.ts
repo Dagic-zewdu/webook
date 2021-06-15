@@ -18,59 +18,64 @@ const Search = document.querySelector('#search') as HTMLInputElement
 const delMssg = delMessage.innerHTML
 //render table for the department
 const RenderTable = async (Data: departmentData[], error: Boolean) => {
-    renderContentLoading('#deptable')
-    if (error) {
-        renderLoadingError('#deptable')
-    }
-    else {
-        let tableHeader: thead[] = [
-            { name: 'office number', icon: 'pin' },
-            { name: 'name', icon: 'account_box' },
-            { name: 'employee quantity', icon: 'people' },
-            { name: 'phone number', icon: 'phone' },
-            { name: 'options', icon: 'settings' }
-        ]
-        let option: optionButton[] = [
-            { name: 'Edit', color: 'primary', icon: 'edit' },
-            { name: 'Delete', color: 'danger', icon: 'delete' }
-        ]
-        let data = Data.map(d => {
-            return {
-                _id: d._id,
-                office_number: d.office_number,
-                name: d.name,
-                emp_length: d.emp_length,
-                phone: d.phone
-            }
-        })
-        renderTable(tableHeader, data, '#deptable', option)
-        const button = document.querySelectorAll('button')
-        const del = document.querySelector('#delDepartment') as HTMLElement
-        let delButton: HTMLButtonElement[] = [], editButton: HTMLButtonElement[] = []
-        //classifying button base on their type
-        button.forEach(b => {
-            if (b.name === 'Edit') {
-                editButton.push(b)
-            }
-            else if (b.name === 'Delete') {
-                delButton.push(b)
-            }
-        })
-        //adding event listener to each delete button
-        delButton.forEach(d => {
-            d.addEventListener('click', () => {
-                delMessage.innerHTML = delMssg
-                setModal(del, d)
-                d_id = d.id
+    try {
+        renderContentLoading('#deptable')
+        if (error) {
+            renderLoadingError('#deptable')
+        }
+        else {
+            let tableHeader: thead[] = [
+                { name: 'office number', icon: 'pin' },
+                { name: 'name', icon: 'account_box' },
+                { name: 'employee quantity', icon: 'people' },
+                { name: 'phone number', icon: 'phone' },
+                { name: 'options', icon: 'settings' }
+            ]
+            let option: optionButton[] = [
+                { name: 'Edit', color: 'primary', icon: 'edit' },
+                { name: 'Delete', color: 'danger', icon: 'delete' }
+            ]
+            let data = Data.map(d => {
+                return {
+                    _id: d._id,
+                    office_number: d.office_number,
+                    name: d.name,
+                    emp_length: d.emp_length,
+                    phone: d.phone
+                }
             })
-        })
-        //adding event listener to edit button
-        editButton.forEach(e => {
-            e.addEventListener('click', () => {
+            renderTable(tableHeader, data, '#deptable', option)
+            const button = document.querySelectorAll('button')
+            const del = document.querySelector('#delDepartment') as HTMLElement
+            let delButton: HTMLButtonElement[] = [], editButton: HTMLButtonElement[] = []
+            //classifying button base on their type
+            button.forEach(b => {
+                if (b.name === 'Edit') {
+                    editButton.push(b)
+                }
+                else if (b.name === 'Delete') {
+                    delButton.push(b)
+                }
+            })
+            //adding event listener to each delete button
+            delButton.forEach(d => {
+                d.addEventListener('click', () => {
+                    delMessage.innerHTML = delMssg
+                    setModal(del, d)
+                    d_id = d.id
+                })
+            })
+            //adding event listener to edit button
+            editButton.forEach(e => {
+                e.addEventListener('click', () => {
 
-                window.location.href = '/editDepartment.html' + '?' + 'id=' + e.id
+                    window.location.href = '/editDepartment.html' + '?' + 'id=' + e.id
+                })
             })
-        })
+        }
+    }
+    catch (err) {
+        renderLoadingError('#deptable', 'Cannot display department internal error please contact admin')
     }
 }
 const setData = async () => {

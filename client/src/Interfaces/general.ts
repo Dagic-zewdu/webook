@@ -7,3 +7,5 @@ export type createdRes = { created: Boolean, error: Boolean, message: any, data:
 export type updatedRes = { Update: {}, updated: Boolean, error: Boolean }
 //for deleted response
 export type delRes = { deleted: boolean, error: boolean, message: any }
+//for string or number
+export type strNum = string | number

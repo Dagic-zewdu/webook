@@ -63,25 +63,25 @@ const adminAuth = (req, res, next) => {
 }
 const allAuth = (req, res, next) => {
     try {
-        const decrypt = decrptObject(req.body.params)
-        const { token, usertype } = decrypt
+        const decrypt = req.headers.data ? decrptObject(req.headers.data) : { token: '', usertype: '' }
+        const { token, user_type: usertype } = decrypt
         if (!token ? true : false) {
             let Data = encryptObject({ message: 'Access Denied', auth: false, error: true })
             res.status(200).send(Data)
         }
         else {
             try {
-                if (usertype === 'manager') {
+                if (usertype == 'manager') {
                     const verify = jwt.verify(token, manager)
                     req.user = verify
                     next()
                 }
-                else if (usertype === 'employee') {
+                else if (usertype == 'employee') {
                     const verify = jwt.verify(token, employee)
                     req.user = verify
                     next()
                 }
-                else if (usertype === 'admin') {
+                else if (usertype == 'admin') {
                     const verify = jwt.verify(token, admin)
                     req.user = verify
                     next()

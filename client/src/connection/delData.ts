@@ -4,7 +4,7 @@ import { delRes } from "../Interfaces/general";
 import { decrptObject, encryptObject } from "../security/encrypt";
 import { userInfo } from "../user/userInfo";
 
-export const delData = async (data: {} | [], api: string) => {
+export const delData = async (data: object | [], api: string) => {
     try {
         let encrypt = encryptObject({ ...data, ...userInfo() })
         let req = await axios.delete(config.host + api, { data: { data: encrypt } })

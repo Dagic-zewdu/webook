@@ -2,6 +2,7 @@ const department = require('../db/departmentSchema')
 const { decrptObject, encryptObject } = require('../security/encrypt')
 const getDepartment = async (req, res) => {
   try {
+
     /** getting all department data */
     const departments = await department.find({})
     const encrpt = encryptObject(departments.reverse())
