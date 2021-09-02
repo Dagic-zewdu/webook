@@ -17,9 +17,9 @@ export const setAdmin = async (page: string, search?: boolean, icon?: string) =>
     const main = body.querySelector('#main')!
     const logo = body.querySelector('#compLogo')! as HTMLImageElement
     main.append(append)
+    style()
     const comp = (await company.getCompany()).logo
     logo.src = config.file + comp
-    style()
     checkAdmin()
 }
 
