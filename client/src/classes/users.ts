@@ -80,6 +80,7 @@ export class usersDb implements userDB {
                 localStorage.setItem('token', Token)
                 localStorage.setItem('auth', true + '')
                 localStorage.setItem('user_type', res.user_type)
+
                 setTimeout(() => {
                     if (res.user_type === 'admin') {
                         window.location.pathname = '/admin.html'

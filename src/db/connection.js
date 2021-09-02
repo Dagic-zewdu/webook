@@ -1,14 +1,14 @@
 const mongoose = require('mongoose')
-const {db}=require('../../config/config')
+const { db, mgdb } = require('../../config/config')
 //connecting to the db
-mongoose.connect(db, 
+mongoose.connect(mgdb,
     {
         useNewUrlParser: true,
         useUnifiedTopology: true,
-        useCreateIndex:true
- },
-(err)=>{
-    if(err) throw err
-    console.log('Db connection success')
-})
-module.exports=mongoose
+        useCreateIndex: true
+    },
+    (err) => {
+        if (err) throw err
+        console.log('Db connection success')
+    })
+module.exports = mongoose
