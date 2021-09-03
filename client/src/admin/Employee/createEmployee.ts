@@ -17,14 +17,13 @@ const employeeDb=new EmployeesDb()
 /**setting option for the department */
 const setDeptOption=async ()=>{
 let Dep=await department.getDepartment()
-console.log(Dep)
 Dep.forEach(d=>setOptions(d._id,d.name,dept))
 }
 setDeptOption()
 /**setting type for the manager */
 const setManagerOption=async ()=>{
     let employees=await employeeDb.getEmployees()
-   employees.forEach(e=> setOptions(e._id,e.first_name+' '+e.last_name,Manager))
+   employees.forEach(e=> e.type==='Manager'?setOptions(e._id,e.first_name+' '+e.middle_name,Manager):()=>{})
 }
 setManagerOption()
 /**form submit handling */
@@ -32,6 +31,6 @@ employeeForm.addEventListener('submit',async e=>{
     e.preventDefault()
     setDisabled('disable')
     let data = formObject(employeeForm) as Partial<employee>
-    console.log(data)
+    employeeDb.saveEmployee(data)
     setDisabled('enable')
 })
