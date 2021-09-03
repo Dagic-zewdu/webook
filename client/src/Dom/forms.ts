@@ -8,10 +8,18 @@ export const formObject = (form: HTMLFormElement) => {
     let inputs = form.querySelectorAll('input')
     let values: { [prop: string]: string | number } = {}
     inputs.forEach(input => {
-        values[input.id] = input.value
+        input.type!=='radio'?
+        values[input.id] = input.value:
+        input.checked?values[input.id] = input.value:()=>{}
+        
+    })
+    let select=form.querySelectorAll('select')!
+    select.forEach(select => {
+        values[select.id] = select.value
     });
     return values
 }
+
 export const setPlaceholder = (form: HTMLFormElement, data: sample) => {
     let inputs = form.querySelectorAll('input')
     let j: string

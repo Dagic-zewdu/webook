@@ -1,4 +1,4 @@
-export type Employee = {
+export type employee = {
     _id: string | number,
     emp_id: string,
     first_name: string,
@@ -8,7 +8,7 @@ export type Employee = {
     position: string,
     department: string,
     salary: number,
-    type: string,
+    type: 'Manager'|'Employee',
     manager: string,
     created_date?: Date
 }

@@ -1,22 +1,22 @@
-import { employee } from "../../Interfaces/Employee/employee";
-import { employeeData } from "../../Interfaces/Employee/employeeData";
+import { employee } from "../../Interfaces/Employee/employeeData";
 import { strNum } from "../../Interfaces/general";
 import { search as Search } from "../../Utility/searchObject";
 import { EmployeesDb } from "./employeeDb";
+import { Employee  } from '../../Interfaces/Employee/employee'
 const empDb = new EmployeesDb()
-export class Employee implements employee {
-    public employees: employeeData[]
+export class EmployeeClass implements Employee {
+    public employees: employee[]
     /**
      * @param employees=>data of employees object array 
      */
-    constructor(employees: employeeData[]) {
+    constructor(employees: employee[]) {
         this.employees = employees
     }
     /**finds employee with given employee id
      * @param emp_id=> string of employee _id
      * @returns object of employee information
      */
-    find = (emp_id: string | number) => this.employees.find(e => emp_id === emp_id)!
+    find = (emp_id: string | number) => this.employees.find(e => emp_id === emp_id)! as employee
     /**finds employee name with given employee id
      * @param emp_id=> string of employee _id
      * @returns firstname and middle name of the given employee id
@@ -51,14 +51,14 @@ export class Employee implements employee {
      * @param emp_id=> string of employee _id
      * @returns department of the given employee id
      */
-    department = (emp_id: strNum) => this.find(emp_id) ? this.find(emp_id).position : ''
+    department = (emp_id: strNum) => this.find(emp_id) ? this.find(emp_id).department: ''
     /**search employee with the given index string 
      * @param index=> text string to search
      * @param data=> optional employeeData parameter if not set it will use the entire employee data
      * @returns employee data of object array
      */
-    search = (index: strNum, data?: employeeData[]) =>
+    search = (index: strNum, data?: employee[]) =>
         Search(index, ['emp_id', 'first_name', 'middle_name', 'last_name', 'department', 'manager', 'position', 'type'],
-            data ? data : this.employees) as employeeData[]
+            data ? data : this.employees) as employee[]
 
 }

@@ -4,12 +4,13 @@ import { fetchData } from "../../connection/fetchData";
 import { saveData } from "../../connection/saveData";
 import { renderLoading, renderOutput } from "../../Dom/render";
 import { employeeDb } from "../../Interfaces/Employee/employee";
-import { editEmployeeData, employeeData, saveEmployeeData } from "../../Interfaces/Employee/employeeData";
+import { employee } from "../../Interfaces/Employee/employeeData";
+import { setDisabled } from "../../layout/button";
 
 export class EmployeesDb implements employeeDb {
-    getEmployees = async () => (await fetchData('employee')).data as employeeData[]
+    getEmployees = async () => (await fetchData('employee')).data as employee[]
     loadingError = async () => (await fetchData('employee')).error
-    saveEmployee = async (data: saveEmployeeData, id?: string) => {
+    saveEmployee = async (data: Partial<employee>, id?: string) => {
         renderLoading(id)
         const save = await saveData(data, 'employee')
         if (!save.error) {
@@ -25,7 +26,7 @@ export class EmployeesDb implements employeeDb {
             renderOutput("error", "unable to save please try again letter" + save.message._message, id)
         }
     }
-    editEmployee = async (data: editEmployeeData, id?: string) => {
+    editEmployee = async (data: Partial<employee>, id?: string) => {
         const save = await editData(data, 'employee')
         if (!save.error) {
             if (save.updated) {

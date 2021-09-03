@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webook admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="asset/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/Modal.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="logo/favicon.png" />
+
+</head>
+
+<body>
+    <script src="asset/css/demo/js/style.js"></script>
+    <!-- _id: string | number,
+    emp_id: string,
+    first_name: string,
+    middle_name: string,
+    last_name: string,
+    sex: 'M' | 'F',
+    position: string,
+    department: string,
+    salary: number,
+    type: string,
+    manager: string,
+    created_date?: Date-->
+
+    <div class="grid" id="append">
+
+        <form id="register">
+            <div class="col l12">
+                <h4 class="center">Resgister employee</h4>
+            </div>
+            <div class="col l2">
+                <a href="employee.html">
+                    <i class="material-icons">arrow_back</i>
+                    Back
+                </a>
+            </div>
+            <div class="col l6">
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">account_box </i>
+                    <label for="emp_id">Employee id</label>
+                    <input id="emp_id" class="validate" type="text" required="true">
+                </div>
+
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">person</i>
+                    <label for="first_name">First name</label>
+                    <input id="first_name" class="validate" type="text" required="true">
+                </div>
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">person</i>
+                    <label for="middle_name">Middle name</label>
+                    <input id="middle_name" class="validate" type="text" required="true">
+                </div>
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">person</i>
+                    <label for="last_name">Last name</label>
+                    <input id="last_name" class="validate" type="text" required="true">
+                </div>
+                <div class="my-2">
+                    <p>Sex</p>
+                    <input type="radio" name="sex" id="sex" value="M" required='true'>Male
+                    <input type="radio" name="sex" id="sex" value="F" required="true">Female
+                </div>
+               
+                
+<div class="my-2" style="display: inline-flex;">
+    <p class="mr-3">Department</p>
+<select name="department" id="department" class="validate form-control" required="true">
+    <option value=""></option>
+</select>
+</div>
+<div class="input-field input-outlined">
+    <i class="material-icons prefix">payments</i>
+    <label for="salary">salary</label>
+    <input id="salary" class="validate" type="number" minlength="1" required="true">
+</div>
+<div class="my-2" style="display: inline-flex;">
+    <p class="mr-3">Type</p>
+<select name="type" id="type" class="validate form-control" required="true">
+    <option value=""></option>
+    <option value="Manager">Manager</option>
+    <option value="Employee">Employee</option>
+</select>
+</div> <br>
+<!-- Manager -->
+<div class="my-2" style="display: inline-flex;">
+    <p class="mr-3">Manager</p>
+<select name="manager" id="manager" class="validate input-field input-outlined">
+    <option value=""></option>
+</select>
+</div>
+            </div>
+            <div class="col l6">
+                <div id="message" class="center"></div>
+                <div class="center">
+                    <button type="submit" id='submit' class="button button-info" >Save </button>
+                    <button type="reset" class="button button-danger">Reset</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+
+
+    <!---->
+    <script src="assets/createEmployee.bundle.js"></script>
+    <script src="asset/vendors/js/vendor.bundle.base.js"></script>
+    <script src="asset/js/misc.js"></script>
+    <script src="asset/js/material.js"></script>
+</body>
+
+</html>
