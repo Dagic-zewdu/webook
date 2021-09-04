@@ -11,7 +11,6 @@ export const formObject = (form: HTMLFormElement) => {
         input.type!=='radio'?
         values[input.id] = input.value:
         input.checked?values[input.id] = input.value:()=>{}
-        
     })
     let select=form.querySelectorAll('select')!
     select.forEach(select => {
