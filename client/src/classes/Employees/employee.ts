@@ -2,7 +2,7 @@ import { employee } from "../../Interfaces/Employee/employeeData";
 import { strNum } from "../../Interfaces/general";
 import { search as Search } from "../../Utility/searchObject";
 import { EmployeesDb } from "./employeeDb";
-import { Employee  } from '../../Interfaces/Employee/employee'
+import { Employee } from '../../Interfaces/Employee/employee'
 const empDb = new EmployeesDb()
 export class EmployeeClass implements Employee {
     public employees: employee[]
@@ -16,7 +16,7 @@ export class EmployeeClass implements Employee {
      * @param emp_id=> string of employee _id
      * @returns object of employee information
      */
-    find = (emp_id: string | number) => this.employees.find(e => emp_id === emp_id)! as employee
+    find = (emp_id: string | number) => this.employees.find(e => e.emp_id === emp_id)! as employee
     /**finds employee name with given employee id
      * @param emp_id=> string of employee _id
      * @returns firstname and middle name of the given employee id
@@ -51,7 +51,7 @@ export class EmployeeClass implements Employee {
      * @param emp_id=> string of employee _id
      * @returns department of the given employee id
      */
-    department = (emp_id: strNum) => this.find(emp_id) ? this.find(emp_id).department: ''
+    department = (emp_id: strNum) => this.find(emp_id) ? this.find(emp_id).department : ''
     /**search employee with the given index string 
      * @param index=> text string to search
      * @param data=> optional employeeData parameter if not set it will use the entire employee data

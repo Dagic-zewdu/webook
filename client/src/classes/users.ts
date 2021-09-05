@@ -25,6 +25,7 @@ export class usersDb implements userDB {
             let req = await axios.post(config.host + 'signUp', { data })
             let res = decrptObject(req.data)
             if (res.error) {
+                console.log(res)
                 renderOutput("error", res.message, id)
             }
             else if (res.signed) {
@@ -42,7 +43,7 @@ export class usersDb implements userDB {
                     if (DATA.user_type === 'admin') {
                         window.location.pathname = '/admin.html'
                     }
-                    else if (DATA.user_type === 'employee' || DATA.user_type === 'manager') {
+                    else if (DATA.user_type === 'user') {
                         window.location.pathname = '/'
                     }
                 }, 1000)
@@ -67,7 +68,8 @@ export class usersDb implements userDB {
             const req = await axios.post(config.host + 'login', { data: encryptObject(data) })
             const res = decrptObject(req.data)
             if (res.error) {
-                renderOutput("error", res.message, id)
+                console.log(res.message, res.error, res.login)
+                renderOutput("error", typeof res.message === "string" ? res.message : 'error while login please try again', id)
             }
             else if (res.login) {
                 renderOutput("success", "Welcome", id)
@@ -91,7 +93,8 @@ export class usersDb implements userDB {
                 }, 1000)
             }
             else {
-                renderOutput("error", res.message, id)
+                console.log(res.message)
+                renderOutput("error", typeof res.message === 'string' ? res.message : 'error while login please try again', id)
             }
         }
         catch (err) {

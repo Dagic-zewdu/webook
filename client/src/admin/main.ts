@@ -11,14 +11,14 @@ const company = new CompanyDb()
  * @param icon icon to set for the page 
  */
 export const setAdmin = async (page: string, search?: boolean, icon?: string) => {
-    style()
     const append = document.querySelector('#append')!
     const body = document.querySelector('body')!
     body.innerHTML = sideNav(page, search, icon)
     const main = body.querySelector('#main')!
     const logo = body.querySelector('#compLogo')! as HTMLImageElement
     main.append(append)
-    
+    style()
+
     const comp = (await company.getCompany()).logo
     logo.src = config.file + comp
     checkAdmin()

@@ -19,10 +19,7 @@ const Users = mongoose.Schema({
     type: String,
     default: 'activated'
   },
-  status: {
-    type: String, //'connected '| 'disconnected'
-    required: true
-  },
+  status: String,
   connected_time: {
     type: Date,
     default: Date.now
