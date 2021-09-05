@@ -6,10 +6,13 @@ module.exports = {
     registerCompany: ["./src/registerCompany.ts"],
     addAdmin: ["./src/addAdmin.ts"],
     login: ["./src/login.ts"],
+    signUp: ["./src/singUp.ts"],
     admin: ["./src/admin/admin.ts"],
+    account: "./src/admin/Account/account.ts",
     /**employee */
     employees: ["./src/admin/Employee/employees.ts"],
     createEmployee: ["./src/admin/Employee/createEmployee"],
+    editEmployee: ["./src/admin/Employee/editEmployee.ts"],
     /**department */
     department: ["./src/admin/department.ts"],
     createDepartment: ["./src/admin/createDepartent.ts"],

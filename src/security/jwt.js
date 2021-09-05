@@ -1,16 +1,14 @@
-const jwt= require('jsonwebtoken')
-const { manager, admin, employee } = require('../../config/config')
+const jwt = require('jsonwebtoken')
+const { manager, user, admin } = require('../../config/config')
 const token = (type, id) => {
-    var Token=''
-    if (type == 'manager') {
-        Token = jwt.sign({id}, manager)
+    var Token = ''
+    if (type == 'admin') {
+        Token = jwt.sign({ id }, admin)
     }
-    else if (type == 'admin') {
-    Token = jwt.sign({id}, admin)
+    else if (type == 'user') {
+        Token = jwt.sign({ id }, user)
     }
-    else if (type == 'employee') {
-        Token = jwt.sign({id}, employee)
-    }
-    return (Token? { signed: true, Token } : { signed: false, Token })
+
+    return (Token ? { signed: true, Token } : { signed: false, Token })
 }
 module.exports = token

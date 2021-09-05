@@ -1,3 +1,4 @@
+import { strNum } from './general';
 export type signupData = {
     emp_id: string,
     password: string,
@@ -8,6 +9,7 @@ export type loginData = {
     emp_id: string, password: string
 }
 export type userData = {
+    _id:strNum,
     username: string,
     password: string,
     user_type: string,
@@ -37,11 +39,12 @@ export interface userDB {
      * 
      */
     isAdminset(): Promise<boolean>
+acccesAccount(user:Partial<userData>,id?:string):Promise<void>
+deleteAccount(_id:strNum,id?:string):Promise<void>
 
 }
 export interface users {
-    loaded: boolean //if the user data are loade
-    error: boolean //if the user data make an error while fetching from server
-    users: [userData]
+    users: userData[]
     getUser(emp_id: string): userData
+    searchUser(index:strNum,data?:userData[]):userData[]
 }
