@@ -16,3 +16,11 @@ export const checkAdmin = async () => {
         window.location.pathname = '/login.html'
     }
 }
+export const checkUser=async ()=>{
+    try{
+
+    }
+    catch(err){
+        
+    }
+}

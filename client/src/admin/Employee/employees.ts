@@ -94,6 +94,7 @@ const RenderTable = async (data: employee[], error: boolean) => {
     }
 
 }
+
 delConfirm.addEventListener('click', async () => {
     
     let emp = await empDb.getEmployees()
