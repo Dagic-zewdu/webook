@@ -35,7 +35,7 @@ router.route("/api/users").get(getUsers);
 router.post("/api/signUp", SignUp);
 router.post("/api/login", Login);
 router.post("/api/checkAdmin", adminAuth, checkAdmin);
-router.put("/api/accessUser", adminAuth, accessUser);
+router.put("/api/accessAccount", adminAuth, accessUser);
 router.put("/api/resetPassword", adminAuth, resetPassword);
 router.put("/api/delUser", adminAuth, deleteUser);
 /**for uploading file */

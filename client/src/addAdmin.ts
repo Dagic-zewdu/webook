@@ -3,6 +3,7 @@ import { usersDb } from "./classes/users"
 import { formObject } from "./Dom/forms"
 import { renderOutput } from "./Dom/render"
 import { signupData } from "./Interfaces/users"
+import { getUrlId } from "./routes/route"
 
 const userDb = new usersDb()
 const company = new CompanyDb()
@@ -10,7 +11,7 @@ const form = document.querySelector('#addAdmin') as HTMLFormElement
 const pswInput = document.querySelector("#password") as HTMLInputElement
 window.addEventListener('load', async e => {
     const check = await userDb.isAdminset()
-    if (check) {
+    if (check && getUrlId() !== 'admin') {
         window.location.pathname = '/login.html'
     }
     else {
