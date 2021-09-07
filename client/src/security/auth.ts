@@ -7,6 +7,7 @@ export const checkAdmin = async () => {
     try {
         const req = await axios.post(config.host + 'checkAdmin', { data: encryptObject(userInfo()) })
         const res = decrptObject(req.data)
+        console.log(res)
         if (!res.auth) {
             window.location.pathname = '/login.html'
         }
@@ -21,6 +22,6 @@ export const checkUser=async ()=>{
 
     }
     catch(err){
-        
+
     }
 }

@@ -1,34 +1,106 @@
-const account = require("../db/userSchema");
+const {
+  emitLetterrs,
+  createLetter,
+  editLetter,
+  deleteLetter,
+  getLetters,
+} = require("../utility/letter");
+const {
+  saveMessage,
+  getMessages,
+  updateMessages,
+  deleteMessage,
+  deleteLetterMessage,
+} = require("../utility/messages");
+const Account = require("../db/userSchema");
 const webSocket = (io) =>
   io.on("connection", (socket) => {
     var emp_id;
-    //on connect
+    /**onConnect save the the connected user to db */
     socket.on("onConnect", (data) => {
       emp_id = data.emp_id;
-      emp_id ? updateConnection(emp_id, true) : () => {};
+      emp_id ? updateConnection(data.emp_id, true, io) : () => {};
     });
-    socket.on("disconnect", (data) => {
-      emp_id ? updateConnection(emp_id, false) : () => {};
+    socket.on("users", async () => {
+      const users = await Account.find();
+      io.sockets.emit("users", users);
+    });
+    socket.emit("outgoing data", new Date());
+
+    /**recieving chat from client */
+    socket.on("submit", (data) => {
+      saveMessage(data, io);
+    }); //for saving message
+    socket.on("update", (data) => updateMessages(data, io)); //for updating message
+    socket.on("delete", (data) => deleteMessage(data, io)); // for deleting message
+    socket.on("delete_letter_message", (data) => deleteLetterMessage(data, io)); // for deleting message
+    /**typing broadcast */
+    socket.on("typing", (data) =>
+      io.sockets.emit("typing", { emp_id: data.emp_id })
+    );
+    socket.on("typing_letter", (data) =>
+      io.sockets.emit("typing_letter", { emp_id: data.emp_id })
+    );
+
+    /**sending chat message */
+    socket.on("chat", async () => {
+      const messages = await getMessages();
+      io.sockets.emit("chat", messages);
+    });
+
+    /**updating chat message */
+    socket.on("update", (data) => updateMessages(data, io));
+
+    /**letter on socket connection */
+    socket.on("letters", async () => {
+      const letters = await getLetters();
+      io.sockets.emit("letters", letters);
+    });
+    socket.on("create_letter", (data) => createLetter(data, io)); //create letter
+    socket.on("update_letter", (data) => editLetter(data, io)); //update letter
+    socket.on("delete_letter", (data) => deleteLetter(data, io)); //delete letter
+
+    /**update db while user is diconnected */
+    socket.on("disConnect", () => {
+      emp_id
+        ? setConnection(
+            {
+              emp_id,
+              status: "disconnected",
+              disconnected_time: Date.now(),
+            },
+            io
+          )
+        : () => {};
+    });
+    socket.on("disconnect", () => {
+      emp_id ? updateConnection(emp_id, false, io) : () => {};
     });
   });
 
-/**connection  time */
+/** */
 const updateConnection = async (emp_id, connected, io) => {
   try {
-    const Account = await account.find({ emp_id });
-    if (Account.length > 0) {
-      const data = connected
-        ? await account.findByIdAndUpdate(Account[0]._id, {
-            //connected time
-            ...Account[0],
-            connected_time: Date.now,
-          })
-        : await account.findByIdAndUpdate(Account[0]._id, {
-            //disconnected time
-            ...Account[0],
-            disconnected_time: Date.now,
-          });
-      io.sockets.emit("Accounts", await account.find());
+    const Accounts = await Account.find();
+    const Account = Accounts.find({ emp_id });
+    if (connected) {
+      if ((Account ? true : false) && Account.status !== "disConnected") {
+        await Account.findByIdAndUpdate(Account._id, {
+          ...Account,
+          status: "connected",
+          connected_time: Date.now,
+        });
+        let acc = await Account.find();
+        io.sockets.emit("users", acc);
+      }
+    } else {
+      await account.findByIdAndUpdate(Account._id, {
+        ...Account,
+        status: "disConnected",
+        disconnected_time: Date.now,
+      });
+      let acc = await Account.find();
+      io.sockets.emit("users", acc);
     }
   } catch (err) {
     return { error: true, data: undefined };

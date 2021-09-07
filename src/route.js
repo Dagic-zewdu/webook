@@ -13,6 +13,12 @@ const {
   editEmployees,
   deleteEmployee,
 } = require("./utility/employee");
+const { EditLetter, GetLetters, DeleteLetter } = require("./utility/letter");
+const {
+  SaveMessage,
+  GetMessages,
+  DeleteLetterMessage,
+} = require("./utility/messages");
 const uploadFile = require("./utility/upload");
 const {
   SignUp,
@@ -54,4 +60,17 @@ router
   .post(adminAuth, createEmployee)
   .put(adminAuth, editEmployees)
   .delete(adminAuth, deleteEmployee);
+/**message */
+router
+  .route("/api/messages")
+  .post(SaveMessage) // for creating messages
+  .get(GetMessages); //for getting all messages
+router.put("/api/delMessages", DeleteLetterMessage); //deleting multiple messages
+
+/**Letters */
+router.route("/api/letter").put(EditLetter); //Edit letter
+router
+  .route("/api/letters")
+  .get(GetLetters) //getting letters data
+  .put(DeleteLetter); //for deleting letter
 module.exports = router;

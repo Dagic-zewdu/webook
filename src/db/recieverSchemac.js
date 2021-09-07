@@ -17,4 +17,10 @@ const reciever = mongoose.Schema({
   seen: false,
   seen_date: Date,
   expired_date: Date,
+  created_date: {
+    type: Date,
+    default: Date.now,
+  },
 });
+const recievers = new mongoose.model("Reciever", reciever);
+module.exports = recievers;
