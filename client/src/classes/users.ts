@@ -34,6 +34,7 @@ export class usersDb implements userDB {
             else if (res.signed) {
                 renderOutput("success", "Welcome", id)
                 const Token = encryptToken(res.Token)
+                localStorage.clear()
                 localStorage.removeItem('id')
                 localStorage.removeItem('token')
                 localStorage.removeItem('auth')
@@ -81,6 +82,7 @@ export class usersDb implements userDB {
                 else {
                     renderOutput("success", "Welcome", id)
                     const Token = encryptToken(res.Token)
+                    localStorage.clear()
                     localStorage.removeItem('id')
                     localStorage.removeItem('token')
                     localStorage.removeItem('auth')
@@ -94,7 +96,7 @@ export class usersDb implements userDB {
                         if (res.user_type === 'admin') {
                             window.location.pathname = '/admin.html'
                         }
-                        else if (res.user_type === 'employee' || res.user_type === 'manager') {
+                        else if (res.user_type === 'user') {
                             window.location.pathname = '/'
                         }
                     }, 1000)

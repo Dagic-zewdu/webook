@@ -29,7 +29,11 @@ const {
   deleteUser,
 } = require("./utility/users");
 const router = require("express").Router();
-
+/**date route */
+router.get('/api/date', (req, res) => {
+  let date = Date.now()
+  res.status(200).send({ date: Date.now() })
+})
 //company api
 router
   .route("/api/company")

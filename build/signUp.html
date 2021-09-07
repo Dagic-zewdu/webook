@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="asset/css/demo/css/style.css">
+    <link rel="stylesheet" href="icons/material-design-icons.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="shortcut icon" href="logo/favicon.png" />
+    <title>create account</title>
+</head>
+
+<body>
+    <script src="asset/css/demo/js/style.js"></script>
+    <div class="container">
+        <div class="row">
+            <div class="col l12">
+                <h3 class="center-align blue darken-1">Signup to webook</h3>
+            </div>
+            <div class="col l6 valign-wrapper" style="margin-top: 50px;">
+                <img src="logo/favicon.png" alt="" id="logo width='100px'">
+            </div>
+            <div class="col l6">
+                <form action="" id="addUser">
+                    <!--Employee id-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">badge </i>
+                        <label for="emp_id">Employee id</label>
+                        <input id="emp_id" class="validate" type="text" required="true">
+                    </div>
+
+                    <!---password-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">lock </i>
+                        <label for="password">password</label>
+                        <input id="password" class="validate" type="password" required="true">
+                    </div>
+                    <!---confirm password-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">lock </i>
+                        <label for="cpassword">confirm password</label>
+                        <input id="cpassword" class="validate" type="password" required="true">
+                    </div>
+                    <div id="message" style="margin-top: 10pxx;">
+
+                    </div>
+                    <div class="center-align" style="margin-top: 20px;">
+                        <button type="submit" class="btn indigo">
+                            Add
+                        </button>
+                        <button type="reset" class="btn red">
+                            reset
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="assets/signUp.bundle.js"></script>
+</body>
+
+</html>

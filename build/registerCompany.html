@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="asset/css/demo/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="icons/material-design-icons.css">
+    <link rel="shortcut icon" href="logo/favicon.png" />
+    <title>Register company</title>
+</head>
+
+<body>
+    <script src="asset/css/demo/js/style.js"></script>
+    <form action="" id="register">
+
+        <div class="container">
+            <div class="row">
+                <div class="col l12">
+                    <h3 class="offset-2 center-align">
+                        <i class="material-icons">app_registration </i>
+                        Register company
+                    </h3>
+                </div>
+                <div class="col s12 m6 l4">
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">business </i>
+                        <label for="name">Company name</label>
+                        <input id="name" class="validate" type="text" required="true">
+                    </div>
+                    <!--employee length-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">people </i>
+                        <label for="emp_length">Employee length</label>
+                        <input id="emp_length" type="number" class="validate" required="true">
+                    </div>
+                    <!--Department length-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">dashboard </i>
+                        <label for="dept_length">Department length</label>
+                        <input id="dept_length" type="number" class="validate" required="true">
+                    </div>
+                    <!--city-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">apartment </i>
+                        <label for="city">city</label>
+                        <input id="city" type="text" class="validate" required="true">
+                    </div>
+                    <!--sub city-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">location_city</i>
+                        <label for="subcity">subcity</label>
+                        <input id="subcity" type="text" class="validate" required="true">
+                    </div>
+
+                </div>
+                <div class="col s12 m6 l4" style="margin-left: 30px;">
+                    <!--woreda-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">location_city</i>
+                        <label for="woreda">woreda</label>
+                        <input id="woreda" type="text" class="validate" required="true">
+                    </div>
+                    <!--house number-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">home </i>
+                        <label for="house">House number </label>
+                        <input id="house" type="number" class="validate" required="true">
+                    </div>
+                    <!--phone 1-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">phone </i>
+                        <label for="phone_1">phone number one </label>
+                        <input id="phone_1" type="number" class="validate" required="true">
+                    </div>
+                    <!--phone 2-->
+                    <div class="input-field input-outlined s6">
+                        <i class="material-icons prefix">phone </i>
+                        <label for="phone_2">phone number two </label>
+                        <input id="phone_2" type="number" class="validate">
+                    </div>
+
+                </div>
+                <div class="col s12 m6 l3" style="margin-left: 30px;">
+                    <img src="" alt="" width="300px" class="materialboxed" id="logoImage">
+                    <!--logo-->
+                    <div class="input-field input-outlined s6">
+                        <p class="">upload logo</p>
+                        <input id="logo" type="file" class="validate" required="true">
+                    </div>
+                    <!--progress-->
+                    <progress id="fileUpload" value="0" max="100"> </progress>
+                    <p id="progress">0%</p>
+                    <!--register message-->
+                    <div id="message" class="center-align" style="margin-top: 20px;">
+
+                    </div>
+                    <!--submit-->
+                    <button type="submit" class="btn indigo" id="submit">save</button>
+                    <button type="reset" class="btn red darken-4">Reset</button>
+                </div>
+
+            </div>
+        </div>
+    </form>
+    <script src="assets/registerCompany.bundle.js"></script>
+</body>
+
+</html>

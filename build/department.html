@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webook admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="asset/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/Modal.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="logo/favicon.png" />
+</head>
+
+<body>
+    <!---->
+
+    <!--main body appended-->
+    <div class="grid" id="append">
+        <div class="ver-lg-4">
+            <a href="/createDepartment.html">
+                <button class="button button-info">create department</button>
+            </a>
+        </div>
+        <div class="ver-lg-12 mt20" id="deptable">
+
+        </div>
+        <div class="ver lg-12">
+            <!--delete department modal-->
+            <div id="delDepartment" class="modal">
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <span class="close">&times;</span>
+                        <h1>
+                            <i class="material-icons">delete</i>
+                            Delete Department
+                        </h1>
+                    </div>
+                    <div class="modal-body">
+                        <h3 class="center" id='delMessage'>
+                            Are you sure you want to delete this department?
+                        </h3>
+                    </div>
+
+                    <div class="modal-footer center pt30">
+                        <button class="button button-danger" id="delete">
+                            <i class="material-icons">delete</i>
+                            Delete
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <!---->
+
+    <script src="assets/department.bundle.js"></script>
+    <script src="asset/vendors/js/vendor.bundle.base.js"></script>
+    <script src="asset/js/misc.js"></script>
+    <script src="asset/js/material.js"></script>
+</body>
+
+</html>

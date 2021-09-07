@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Webook admin</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="asset/vendors/mdi/css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/button.css">
+    <link rel="stylesheet" href="css/table.css">
+    <link rel="stylesheet" href="css/input.css">
+    <link rel="stylesheet" href="css/Modal.css">
+    <!-- End layout styles -->
+    <link rel="shortcut icon" href="logo/favicon.png" />
+
+</head>
+
+<body>
+    <script src="asset/css/demo/js/style.js"></script>
+    <!-- _id: string,
+    name?: string,
+    phone?: string,
+    emp_length?: number,
+    office_number?: string-->
+
+    <div class="grid" id="append">
+        <div class="col l12">
+            <h4 class="center">create department</h4>
+        </div>
+        <div class="col l2">
+            <a href="department.html">
+                <i class="material-icons">arrow_back</i>
+                Back
+            </a>
+        </div>
+        <div class="col l6">
+            <form id="register">
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">account_box </i>
+                    <label for="name">Name</label>
+                    <input id="name" class="validate" type="text" required="true">
+                </div>
+
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">people </i>
+                    <label for="phone">Employee quantity</label>
+                    <input id="emp_length" class="validate" type="number" required="true">
+                </div>
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">phone number </i>
+                    <label for="phone">phone</label>
+                    <input id="phone" class="validate" type="number" required="true">
+                </div>
+                <div class="input-field input-outlined">
+                    <i class="material-icons prefix">home </i>
+                    <label for="phone">office number</label>
+                    <input id="office_number" class="validate" type="number" required="true">
+                </div>
+                <div id="message" class="center"></div>
+                <div class="center">
+                    <button type="submit" id='submit' class="button button-info">Save </button>
+                    <button type="reset" class="button button-danger">Reset</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!---->
+    <script src="assets/createDepartment.bundle.js"></script>
+    <script src="asset/vendors/js/vendor.bundle.base.js"></script>
+    <script src="asset/js/misc.js"></script>
+    <script src="asset/js/material.js"></script>
+</body>
+
+</html>
