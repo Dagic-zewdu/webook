@@ -16,11 +16,13 @@ const Account = require("../db/userSchema");
 const webSocket = (io) =>
   io.on("connection", (socket) => {
     var emp_id;
+    /** */
+
     /**onConnect save the the connected user to db */
     socket.on("onConnect", (data) => {
-      console.log(data)
       emp_id = data.emp_id;
-      emp_id ? updateConnection(data.emp_id, true, io) : () => { };
+      let user = (emp_id ? true : false)
+      user ? updateConnection(data.emp_id, true, io) : () => { };
     });
     socket.on("users", async () => {
       const users = await Account.find();
@@ -63,8 +65,7 @@ const webSocket = (io) =>
 
     /**update db while user is diconnected */
     socket.on("disConnect", data => {
-      emp_id = data.emp_id ? data.emp_id : emp_id
-        ? updateConnection(emp_id, false, io)
+      emp_id ? updateConnection(emp_id, false, io)
         : () => { };
     });
     socket.on("disconnect", () => {
@@ -75,24 +76,26 @@ const webSocket = (io) =>
 /** */
 const updateConnection = async (emp_id, connected, io) => {
   try {
-    const Account = await Account.find({ emp_id });
+    console.log(emp_id)
+    const account = await Account.find({ emp_id });
     if (connected) {
-      if ((Account ? true : false) && Account.status !== "disConnected") {
-        await Account.findByIdAndUpdate(Account._id, {
-          ...Account,
-          status: "connected",
-          connected_time: Date.now,
-        });
-        let acc = await Account.find({});
-        let connected = await Account.find({ status: "connected" })
-        console.log(connected.length + " account connected")
-        io.sockets.emit("users", acc);
+      if (account ? true : false) {
+        if (account.status !== "disConnected") {
+
+          let update = await Account.findOneAndUpdate({ _id: account[0]._id }, {
+            status: "connected",
+            connected_time: Date.now(),
+          });
+          let acc = await Account.find({});
+          let connected = await Account.find({ status: "connected" })
+          console.log(connected.length + " account connected")
+          io.sockets.emit("users", acc);
+        }
       }
     } else {
-      await account.findByIdAndUpdate(Account._id, {
-        ...Account,
+      let update = await Account.findOneAndUpdate({ _id: account[0]._id }, {
         status: "disConnected",
-        disconnected_time: Date.now,
+        disconnected_time: Date.now(),
       });
       let acc = await Account.find({});
       let connected = await Account.find({ status: "connected" })
@@ -100,6 +103,7 @@ const updateConnection = async (emp_id, connected, io) => {
       io.sockets.emit("users", acc);
     }
   } catch (err) {
+    console.log(err)
     return { error: true, data: undefined };
   }
 };
