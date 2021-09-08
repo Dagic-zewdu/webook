@@ -3,6 +3,7 @@ import { config } from "../config/config";
 import { style } from "../Dom/addStyle";
 import { sideNav } from "../layout/sideNav";
 import { checkAdmin } from "../security/auth";
+import { logout } from "../user/logout";
 const company = new CompanyDb()
 /**
  * 
@@ -18,7 +19,7 @@ export const setAdmin = async (page: string, search?: boolean, icon?: string) =>
     const logo = body.querySelector('#compLogo')! as HTMLImageElement
     main.append(append)
     style()
-
+    logout()
     const comp = (await company.getCompany()).logo
     logo.src = config.file + comp
     checkAdmin()

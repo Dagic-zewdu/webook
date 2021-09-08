@@ -18,8 +18,9 @@ const webSocket = (io) =>
     var emp_id;
     /**onConnect save the the connected user to db */
     socket.on("onConnect", (data) => {
+      console.log(data)
       emp_id = data.emp_id;
-      emp_id ? updateConnection(data.emp_id, true, io) : () => {};
+      emp_id ? updateConnection(data.emp_id, true, io) : () => { };
     });
     socket.on("users", async () => {
       const users = await Account.find();
@@ -61,28 +62,20 @@ const webSocket = (io) =>
     socket.on("delete_letter", (data) => deleteLetter(data, io)); //delete letter
 
     /**update db while user is diconnected */
-    socket.on("disConnect", () => {
-      emp_id
-        ? setConnection(
-            {
-              emp_id,
-              status: "disconnected",
-              disconnected_time: Date.now(),
-            },
-            io
-          )
-        : () => {};
+    socket.on("disConnect", data => {
+      emp_id = data.emp_id ? data.emp_id : emp_id
+        ? updateConnection(emp_id, false, io)
+        : () => { };
     });
     socket.on("disconnect", () => {
-      emp_id ? updateConnection(emp_id, false, io) : () => {};
+      emp_id ? updateConnection(emp_id, false, io) : () => { };
     });
   });
 
 /** */
 const updateConnection = async (emp_id, connected, io) => {
   try {
-    const Accounts = await Account.find();
-    const Account = Accounts.find({ emp_id });
+    const Account = await Account.find({ emp_id });
     if (connected) {
       if ((Account ? true : false) && Account.status !== "disConnected") {
         await Account.findByIdAndUpdate(Account._id, {
@@ -90,7 +83,9 @@ const updateConnection = async (emp_id, connected, io) => {
           status: "connected",
           connected_time: Date.now,
         });
-        let acc = await Account.find();
+        let acc = await Account.find({});
+        let connected = await Account.find({ status: "connected" })
+        console.log(connected.length + " account connected")
         io.sockets.emit("users", acc);
       }
     } else {
@@ -99,7 +94,9 @@ const updateConnection = async (emp_id, connected, io) => {
         status: "disConnected",
         disconnected_time: Date.now,
       });
-      let acc = await Account.find();
+      let acc = await Account.find({});
+      let connected = await Account.find({ status: "connected" })
+      console.log(connected.length + " account connected")
       io.sockets.emit("users", acc);
     }
   } catch (err) {

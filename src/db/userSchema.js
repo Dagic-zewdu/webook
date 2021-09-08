@@ -25,12 +25,10 @@ const Users = mongoose.Schema({
     default: Date.now
   },
   disconnected_time: Date,
-  phone: String,
   created_date: {
     type: Date,
     default: Date.now
-  },
-  photo: String
+  }
 })
 
 /** */

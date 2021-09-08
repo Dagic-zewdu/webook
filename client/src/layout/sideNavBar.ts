@@ -3,8 +3,8 @@
  * @param search => to avoid search input
  * @returns side nav html string
  */
- export const sideNavBar = (page: string, search?: boolean, icon?: string) =>
- `<div class="body-wrapper">
+export const sideNavBar = (page: string, search?: boolean, icon?: string) =>
+    `<div class="body-wrapper">
 <!-- partial:partials/_sidebar.html -->
 <aside class="mdc-drawer mdc-drawer--dismissible mdc-drawer--open">
 
@@ -85,7 +85,7 @@
                  ${page}
              </span>
              ${!search ?
-     `<div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
+        `<div class="mdc-text-field mdc-text-field--outlined mdc-text-field--with-leading-icon search-text-field d-none d-md-flex">
                  <i class="material-icons mdc-text-field__icon">search</i>
                  <input class="mdc-text-field__input" id="search">
                  <div class="mdc-notched-outline">
@@ -125,7 +125,7 @@
                              <div class="item-thumbnail item-thumbnail-icon-only">
                                  <i class="mdi mdi-settings-outline text-primary"></i>
                              </div>
-                             <div
+                             <div   id="logout"
                                  class="item-content d-flex align-items-start flex-column justify-content-center">
                                  <h6 class="item-subject font-weight-normal">Logout</h6>
                              </div>
