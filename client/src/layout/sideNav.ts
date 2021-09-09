@@ -118,10 +118,10 @@ export const sideNav = (page: string, search?: boolean, icon?: string) =>
                                 <div class="item-thumbnail item-thumbnail-icon-only">
                                     <i class="mdi mdi-settings-outline text-primary"></i>
                                 </div>
-                                <div
+                                <button 
                                     class="item-content d-flex align-items-start flex-column justify-content-center">
                                     <h6 class="item-subject font-weight-normal">Logout</h6>
-                                </div>
+                                </button>
                             </li>
                         </ul>
                     </div>
@@ -142,11 +142,14 @@ export const sideNav = (page: string, search?: boolean, icon?: string) =>
                                     <h6 class="item-subject font-weight-normal">Settings</h6>
                                 </div>
                             </li>
-                            <li class="mdc-list-item" role="menuitem">
-                                <div class="item-thumbnail item-thumbnail-icon-only">
-                                    <i class="mdi mdi-progress-download text-primary"></i>
+                            <li class="mdc-list-item" role="menuitem" id="logout">
+                                <div class="item-thumbnail item-thumbnail-icon-only" >
+                                   <i class="material-icons prefix">logout</i>
                                 </div>
-
+  <div
+                                    class="item-content d-flex align-items-start flex-column justify-content-center">
+                                    <h6 class="item-subject font-weight-normal">Logout</h6>
+                                </div>
                             </li>
                         </ul>
                     </div>

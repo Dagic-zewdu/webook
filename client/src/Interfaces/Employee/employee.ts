@@ -1,5 +1,5 @@
 import { strNum } from "../general";
-import {  employee} from "./employeeData";
+import { employee } from "./employeeData";
 
 export interface employeeDb {
     getEmployees(): Promise<employee[]>
@@ -10,7 +10,7 @@ export interface employeeDb {
 }
 export interface Employee {
     employees: employee[]
-    find(emp_id: string):employee
+    find(emp_id: string): employee
     fullName(emp_id: string): string
     thumbnail(emp_id: string): string
     name(emp_id: string): string

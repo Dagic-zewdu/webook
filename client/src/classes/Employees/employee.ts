@@ -16,7 +16,11 @@ export class EmployeeClass implements Employee {
      * @param emp_id=> string of employee _id
      * @returns object of employee information
      */
-    find = (emp_id: string | number) => this.employees.find(e => e.emp_id === emp_id)! as employee
+    find = (emp_id: string | number) => {
+
+        let emp = this.employees.find(e => e.emp_id === emp_id)! as employee
+        return emp
+    }
     /**finds employee name with given employee id
      * @param emp_id=> string of employee _id
      * @returns firstname and middle name of the given employee id

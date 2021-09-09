@@ -13,6 +13,7 @@ const company = new CompanyDb()
  */
 export const setAdmin = async (page: string, search?: boolean, icon?: string) => {
     const append = document.querySelector('#append')!
+    console.log(append)
     const body = document.querySelector('body')!
     body.innerHTML = sideNav(page, search, icon)
     const main = body.querySelector('#main')!

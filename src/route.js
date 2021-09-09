@@ -60,7 +60,7 @@ router
 /**employee data */
 router
   .route("/api/employee")
-  .get(allAuth, getEmployees)
+  .get(getEmployees)
   .post(adminAuth, createEmployee)
   .put(adminAuth, editEmployees)
   .delete(adminAuth, deleteEmployee);

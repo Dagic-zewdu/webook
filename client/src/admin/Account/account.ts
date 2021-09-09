@@ -59,14 +59,17 @@ const RenderTable = (data: userData[], error: boolean) => {
                     let user = User.getUser(b.id)
                     accessMessage.innerHTML = user.access === 'activated' ? "Are you sure to Deactivate account?" :
                         "Activate account"
-                    console.log(b, accessModal)
                     a_id = b.id
                     setModal(accessModal, b)
                 })
             }
             else if (b.name === "Delete") {
-                d_id = b.id
-                setModal(delModal, b)
+
+                b.addEventListener('click', () => {
+                    d_id = b.id
+                    setModal(delModal, b)
+                })
+
             }
         })
     }

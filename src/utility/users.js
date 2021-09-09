@@ -5,9 +5,10 @@ const token = require("../security/jwt");
 
 const getUsers = async (req, res) => {
   try {
+
     const allUsers = await User.find(
       {},
-      "_id username user_type access emp_id created_date"
+      "_id username user_type access emp_id status connected_time disconnected_time created_date"
     );
     const secure = encryptObject(allUsers.reverse());
     res.send(secure);

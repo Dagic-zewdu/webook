@@ -27,7 +27,8 @@ form.addEventListener('submit', async e => {
     else {
         let data = { ...user, user_type: 'user' } as signupData
         let { emp_id } = user
-        let employee = empClass.find(emp_id as strNum) ? true : false
+        emp_id as strNum
+        let employee = empClass.find(emp_id) ? true : false
         console.log(employee)
         //employee found
         if (employee) {

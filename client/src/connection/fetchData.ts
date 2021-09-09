@@ -16,6 +16,7 @@ export const fetchData = async (api: string, id?: string): Promise<fetch> => {
             result = { error: false, data: Data }
       }
       catch (err) {
+            console.log(err)
             result = { error: true, data: null }
       }
       return result

@@ -65,6 +65,7 @@ const webSocket = (io) =>
 
     /**update db while user is diconnected */
     socket.on("disConnect", data => {
+      console.log(emp_id)
       emp_id ? updateConnection(emp_id, false, io)
         : () => { };
     });
@@ -76,7 +77,6 @@ const webSocket = (io) =>
 /** */
 const updateConnection = async (emp_id, connected, io) => {
   try {
-    console.log(emp_id)
     const account = await Account.find({ emp_id });
     if (connected) {
       if (account ? true : false) {

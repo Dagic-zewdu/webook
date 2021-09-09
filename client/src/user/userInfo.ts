@@ -7,6 +7,6 @@ export type userInfoType = {
 }
 export const userInfo = (): userInfoType => {
     const { id, token: Token, user_type } = localStorage
-    const token = decryptToken(Token)
+    const token = Token ? decryptToken(Token) : Token
     return { id, token, user_type }
 }
